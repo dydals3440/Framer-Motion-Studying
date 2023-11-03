@@ -9,8 +9,8 @@ export default function Home() {
     <div>
       {/* <BasicsOfMotion /> */}
       {/* <Gestures /> */}
-      <AnimationControls />
-      {/* <ViewBasedAnimations /> */}
+      {/* <AnimationControls /> */}
+      <ViewBasedAnimations />
       {/* <ScrollAnimations /> */}
     </div>
   );

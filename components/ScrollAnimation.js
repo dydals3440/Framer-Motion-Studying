@@ -1,38 +1,45 @@
-import { useScroll, motion, useSpring, useTransform } from "framer-motion";
-import React from "react";
+import { useScroll, motion, useSpring, useTransform } from 'framer-motion';
+import React from 'react';
 
 const ScrollAnimations = () => {
   const { scrollYProgress } = useScroll();
 
+  // spring 느낌의 버전
   const scaleX = useSpring(scrollYProgress);
 
   const background = useTransform(
     scrollYProgress,
-    [0, 1],
-    ["rgb(86, 1, 245)", "rgb(1, 245, 13)"]
+    // 0이 시작점, 1이 끝점 아래와 위의 개수를 맞춰주어야함!
+    [0, 0.25, 1],
+    // rgb / hex 코드로 작성해줘야함 blue와 같은 색상은 먹히지않음
+    ['rgb(86, 1, 245)', 'rgb(86,100,245)', 'rgb(1, 245,13)']
   );
+
+  // 점점 색상 바꾸고 싶은 경우
 
   return (
     <div>
       <motion.div
         style={{
+          // X가 커짐, Y축의 진행방향에 따라(emotion)
           // scaleX: scrollYProgress,
+          // 2. 방법
           scaleX,
-          transformOrigin: "left",
-          // background: "blue",
           background,
-          position: "sticky",
+          // 왼쪽에서 변화 시작
+          transformOrigin: 'left',
+          // backgroundColor: 'blue',
+          position: 'sticky',
           top: 0,
-          width: "100%",
-          height: "20px",
+          width: '100%',
+          height: '20px',
         }}
       />
-
       <div
         style={{
-          maxWidth: "700px",
-          margin: "auto",
-          padding: "1.2rem",
+          maxWidth: '700px',
+          margin: 'auto',
+          padding: '1.2rem',
         }}
       >
         <p>
